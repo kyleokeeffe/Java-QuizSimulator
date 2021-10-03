@@ -48,12 +48,14 @@ public class LottoDriver {
 			roundPrintout+=String.format("%n%s%n%10d%n%s%n%10d%n","Which means the number to guess for this round is:",roundSum,"Your guess: ",userGuess);
 			Status roundResult = checkRoundResult(userGuess,roundSum);
 
+			//determine if user guess matches sum of three random numbers
 			switch(roundResult) {
 				case WON:
 					gameStatus=Status.WON;
 					roundPrintout += String.format("%nAmazing! You won!%nCongratulations!!");
 					break;
 				case LOST:
+				//check if player has played five times
 					if(roundNumber<=4) {
 						roundPrintout+=String.format("%nSorry, you lost that round. Would you like to run the lotto again?");
 						int reply = JOptionPane.showConfirmDialog(null,roundPrintout,null,JOptionPane.YES_NO_OPTION);
@@ -79,6 +81,7 @@ public class LottoDriver {
 		while(gameStatus == Status.CONTINUE && roundNumber<=5);
 		
 		String finalMessage;
+		//After game is over, give final message
 		switch(gameStatus) {
 			case WON:
 				finalMessage = String.format("Congratulations on winning the lottery!%n");

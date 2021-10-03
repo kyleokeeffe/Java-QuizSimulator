@@ -133,7 +133,6 @@ public class Test{
 				};
 		this.questionsIndex = new ArrayList<Integer>();
 		
-		//fill array of index values representing each question in test: facilitating random printing of each question only once
 		for(int qI = 0;qI<this.getQuestions().length;qI++)
 			getQuestionsIndex().add(qI);
 	}
@@ -202,7 +201,6 @@ public class Test{
 		//loop through all the questions in the test
 		for(Question question:this.getQuestions()) {
 			Question currentQuestion=simulateQuestion(questionNumber++);
-			
 			//loop through the same question until valid input is given
 				do{
 					//save upper case of first character entered by user
@@ -226,7 +224,6 @@ public class Test{
 			int resultsCorrect=Collections.frequency(getTestResult(), AnswerStatus.CORRECT);
 			int resultsIncorrect=Collections.frequency(getTestResult(), AnswerStatus.INCORRECT);
 			double score = (double)resultsCorrect/(double)(resultsCorrect+resultsIncorrect)*100;
-			
 		JOptionPane.showMessageDialog(null,String.format("You got %d out of %d correct, or %%%.0f",resultsCorrect,resultsCorrect+resultsIncorrect,score));
 		}
 
@@ -243,6 +240,7 @@ public class Test{
 	public static void generateMessage(Enum<?> answerJudgement) {
 		SecureRandom randomizer = new SecureRandom();
 		String message= new String();
+		//Define collections of messages
 		String[] correctMessages= {
 				"That's right! Nice one!",
 				"You got it! Way to go!",

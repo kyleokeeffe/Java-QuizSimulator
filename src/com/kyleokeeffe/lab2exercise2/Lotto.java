@@ -14,6 +14,7 @@ public class Lotto {
 		int max=9;
 		int numberOfNumbers=3;
 		
+		//Create a random number 3 three times
 		this.lottoNumbers = new int[numberOfNumbers];
 		for(int i = 0;i<lottoNumbers.length;i++) {
 			this.lottoNumbers[i]=randomizer.nextInt((max - min) + 1) + min;
